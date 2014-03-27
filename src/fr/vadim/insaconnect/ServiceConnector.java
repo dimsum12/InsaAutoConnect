@@ -10,10 +10,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import android.app.Notification;
+import android.app.Notification.Builder;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.app.TaskStackBuilder;
+import android.support.v4.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,7 +27,8 @@ import android.util.Log;
  */
 public class ServiceConnector extends Service {
 	Context c;
-	final String expectedURL = "securelogin.arubanetworks.com";
+	static final String protocol    = "http://";
+	static final String expectedURL = "a6000.insa-lyon.fr";
 
 	
 	/*
@@ -119,7 +121,7 @@ public class ServiceConnector extends Service {
 		builder.setContentIntent(resultPendingIntent);
 		
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-		mNotificationManager.notify(12121993, builder.build());	
+		mNotificationManager.notify(12121993, builder.getNotification());	
 	}
 	
 	//Connect to INSA
@@ -155,7 +157,7 @@ public class ServiceConnector extends Service {
 		
 			
 			
-			URL url = new URL("http://securelogin.arubanetworks.com/cgi-bin/login");
+			URL url = new URL(protocol + expectedURL+"/cgi-bin/login");
 			//URL url = new URL("http://vadimcaen.free.fr/testPost.php");
 			Log.d("sendid", "Open Connection");
 			

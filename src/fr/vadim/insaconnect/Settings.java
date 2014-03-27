@@ -79,7 +79,7 @@ public class Settings extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://securelogin.arubanetworks.com/cgi-bin/login?cmd=logout")));
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ServiceConnector.expectedURL + "/cgi-bin/login?cmd=logout")));
 				//finish();
 			}
 		});
